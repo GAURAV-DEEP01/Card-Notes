@@ -1,3 +1,7 @@
 *{
-    background-color: rgb(54, 54, 54);
+    margin: 0px;
+    padding: 0px;
+}
+button:focus {
+    outline: none;
 }
