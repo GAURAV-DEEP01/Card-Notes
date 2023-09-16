@@ -5,3 +5,16 @@
 button:focus {
     outline: none;
 }
+.custom_btn{
+    padding: 5px 7px;
+    border: solid 1px ;
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+.custom_add_btn{
+    padding: 9px 12px;
+    border: solid 1px ;
+    background-color: aquamarine;
+    border-radius: 10px;
+    font-size: large;
+}

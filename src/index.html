@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="card.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>Card Notes</title>
 </head>
 <body>
     <div class="container container-sm mt-5">
-    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="btn btn-success btn-lg " data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
+    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="custom_add_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
     
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form>
@@ -31,7 +31,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary new_note_close_btn" data-bs-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary addNoteBtn">Save</button>
             </div>
           </div>
@@ -39,16 +39,14 @@
       </div>
     <div class="allCardContainer mt-3 p-3 rounded bg-secondary ">
         <div class="card mb-3" >
-            <div class="card-body">
-              <h5 class="card-title">Add Notes</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-success">View Full</a>
-              <a href="#" class="btn btn-success deleteCardBtn">Delete</a>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Add Notes</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           </div>
+        </div>
     </div>
 </div>
    <script src="card.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
