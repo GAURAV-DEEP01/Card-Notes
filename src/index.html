@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Card Notes</title>
 </head>
 <body>
     <div class="container container-sm mt-5">
-    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="custom_add_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
+    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="custom_add_btn border-dark-subtle" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
     
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -32,18 +33,14 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary new_note_close_btn" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary addNoteBtn">Save</button>
+              <button type="button" class="btn btn-success addNoteBtn">Save</button>
             </div>
           </div>
         </div>
       </div>
-    <div class="allCardContainer mt-3 p-3 rounded bg-secondary ">
-        <div class="card mb-3" >
-          <div class="card-body">
-            <h5 class="card-title">Add Notes</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
+
+    <div class="allCardContainer containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
+       
     </div>
 </div>
    <script src="card.js"></script>
