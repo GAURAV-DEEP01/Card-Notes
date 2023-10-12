@@ -6,12 +6,32 @@
 :root{
  --mainBtnColor : #7fffd47a;
  --mainBtnColorHover: #63c6a598;  
+ --secondaryColor:#ff39ff6d;
+ --secondaryColorHover:#be32be79;
 }
 
 button:focus {
     outline: none;
 }
-
+.card_view_close{
+    border: none;
+}
+.color_prim,.card_view_close{
+    background-color: var(--mainBtnColor);
+}
+.color_prim:hover{
+    background-color: var(--mainBtnColorHover);
+}
+.color_sec{
+    background-color: var(--secondaryColor);
+}
+.color_sec:hover,.card_view_close:hover{
+    background-color: var(--secondaryColorHover);
+}
+.add_border{
+    padding-bottom:10px;
+    border-bottom: solid #4c4c4c33
+  }
 .containeBg{
     background-color: rgba(198, 198, 198, 0.28);
 }
@@ -24,13 +44,9 @@ button:focus {
 .custom_btn{
     padding: 5px 7px;
     border: solid 1px ;
-    background-color:var(--mainBtnColor);
     border-radius: 8px;
 }
 
-.custom_btn:hover{
-    background-color: var(--mainBtnColorHover);
-}
 .custom_add_btn{
     padding: 9px 12px;
     border: solid 1px ;
@@ -41,10 +57,37 @@ button:focus {
 .custom_add_btn:hover{
     background-color: var(--mainBtnColorHover);
 }
-
+.viewFullbtn{
+    background-color:#ff39ff3a ;
+}
+.viewFullbtn:hover{
+    background-color: var(--secondaryColorHover);
+}
 .noteHight{
     height: 50px;
 }
+.new_note_close_btn{
+    background-color: rgba(170, 170, 170, 0.745);
+    border: none;
+}
+.new_note_close_btn:hover{
+    background-color: rgba(150, 150, 150, 0.745);
+}
+.addNoteBtn{
+    background-color: var(--secondaryColor);
+    border: none;
+}
+.addNoteBtn:hover{
+    background-color: var(--secondaryColorHover);
+}
 [contenteditable] {
     outline: 0px solid transparent;
+}
+.card_view{
+    background-color: rgb(255, 255, 255);
+}
+.custom_shadow{
+    -webkit-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
+-moz-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
+box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
 }
