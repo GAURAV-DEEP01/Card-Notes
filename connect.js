@@ -1,14 +1,12 @@
-const {MongoClient} = require('mongodb');
-const url = "mongodb://0.0.0.0:27017";
-const cardDatabase= "card_dashbord";
-const clientConnect = new MongoClient(url);
+// const mongoose = require('mongoose')
 
-async function dbConnect(){
-    try {
-        const result = await clientConnect.connect();
-        return result.db(cardDatabase);
-    } catch (error) {
-        return "Error in connection" + error;
-    }
-}
-module.exports= {dbConnect}; 
+// async function dbConnect(){
+//     try {
+//         await mongoose.connect('0.0.0.0://localhost:27017',(err)=>{
+//             console.log('connected to mongodb using mongoose')      
+//         });
+//     } catch (error) {
+//         return "Error in connection" + error;
+//     }
+// }
+// module.exports= {dbConnect}; 

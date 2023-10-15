@@ -10,58 +10,59 @@
 </head>
 <body>
   <!-- Just an image -->
-<nav class="navbar">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img
-        src="images/Card logo.png"
-        height="40"
-        alt="MDB Logo"
-        loading="lazy"
-      />
-    </a>
-  </div>
-</nav>
-    <div class="card_view rounded position-fixed px-sm-5 px-4 py-4 mt-1 w-100 "  style="display: none;">   
-      <button class="card_view_close custom_shadow rounded mt-3 me-3 position-absolute top-0 end-0 px-3 py-2"><img src="icons/x.svg" alt="close icon" srcset=""></button>
-      <h1 class="card_view_heading fw-bold add_border text-capitalize text-break"></h1>
-      <p class="card_view_date text-break"></p>
-      <p class="card_view_note text-break"></p>
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img
+          src="images/Card logo.png"
+          height="40"
+          alt="card Notes Logo"
+          loading="lazy"
+        />
+      </a>
     </div>
+  </nav>
 
-    <div class="container container-sm mt-3 ">
-      <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="main_add_btn custom_add_btn border-dark-subtle" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
-      <!-- MODEL -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
-              <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Heading :</label>
-                  <input type="text" class="form-control card_heading" id="recipient-name">
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Note :</label>
-                  <textarea class="form-control card_note" id="message-text"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="custom_btn p-2 px-3  new_note_close_btn" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="custom_btn p-2 px-3 addNoteBtn">Save</button>
-            </div>
+  <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 mt-1 w-100 "  style="display: none;">   
+    <button class="card_view_close custom_shadow rounded me-3 position-absolute top-0 end-0 px-3 py-2"><img src="icons/x.svg" alt="close icon" srcset=""></button>
+    <h3 class="card_view_heading fw-bold add_border text-capitalize text-break"></h3>
+    <p class="card_view_date text-break"></p>
+    <p class="card_view_note text-break"></p>
+  </div>
+
+  <div class="container container-sm mt-3 ">
+    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="main_add_btn custom_add_btn border-dark-subtle custom_shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Note + </button></div>
+    <!-- MODEL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
+            <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Heading :</label>
+                <input type="text" class="form-control card_heading" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Note :</label>
+                <textarea class="form-control card_note" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="custom_btn p-2 px-3  new_note_close_btn" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="custom_btn p-2 px-3 addNoteBtn">Save</button>
           </div>
         </div>
       </div>
-      <!-- MODEL END-->
+    </div>
+    <!-- MODEL END-->
       
       
-      <div class="allCardContainer containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
+    <div class="allCardContainer containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
        
     </div>
 </div>

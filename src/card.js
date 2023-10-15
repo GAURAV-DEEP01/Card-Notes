@@ -1,4 +1,4 @@
-const allCardContainer = document.querySelector(".allCardContainer");
+const allCardContainer = document?.querySelector(".allCardContainer");
 //note array to hold the card note data -> heading, note and date
 //temp data just for testing...
 let noteArray = [
@@ -76,8 +76,8 @@ let noteArray = [
 class Card {
     // methods -> create, render, checkEmpty, viewFull
     static create(heading, note, date, indx) {
-        let card = document.createElement('div');
-        card.setAttribute('class', 'card g-col-12 g-col-sm-6 g-col-lg-4');
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card g-col-12 g-col-sm-6 g-col-lg-4 custom_shadow border-0');
         card.setAttribute('id', indx);
         card.innerHTML = `<div class="card-body">
                             <h5 class="card-title truncate text-capitalize cardHeading">${heading}</h5>
@@ -128,14 +128,15 @@ class Card {
 }
 
 // first function calls
-fetchUserNoteCards();
+// fetchUserNoteCards();
+Card.render();
 Card.checkEmpty();
 
 let prevEdit = null;
 
-const cardHeading = document.querySelector(".card_heading");
-const cardNote = document.querySelector(".card_note");
-const addNoteBtn = document.querySelector(".addNoteBtn");
+const cardHeading = document?.querySelector(".card_heading");
+const cardNote = document?.querySelector(".card_note");
+const addNoteBtn = document?.querySelector(".addNoteBtn");
 
 //creates card on click  
 addNoteBtn.addEventListener('click', () => {
@@ -190,8 +191,6 @@ allCardContainer.addEventListener('click', (e) => {
         return;
     }
 });
-
-
 
 const cardView = document.querySelector(".card_view");
 const cardViewHeading = document.querySelector(".card_view_heading");

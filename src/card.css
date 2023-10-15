@@ -85,9 +85,31 @@ button:focus {
 }
 .card_view{
     background-color: rgb(255, 255, 255);
+    height: 90vh;
+    overflow-y: scroll;
+}
+ 
+.card_view_heading{
+    font-size: xxx-large;
+}
+.card_view_note{
+    height: auto;
+    font-size: large;
+    line-height: 1.5;
 }
 .custom_shadow{
-    -webkit-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
--moz-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.407);
+    -webkit-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+    -moz-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+    box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+}
+textarea.form-control{
+    height:200px;
+} 
+@media (max-width:700px) {
+    .card_view_heading{
+        font-size: x-large;
+    }
+    textarea.form-control{
+        height: 200px;
+    } 
 }
