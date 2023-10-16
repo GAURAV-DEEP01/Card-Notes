@@ -4,17 +4,14 @@ const mongoose = require('mongoose')
 const Card = require('./model/Card')
 const User = require('./model/User')
 const app = express()
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const port = 5000
 //promise chaining for now change this later
 mongoose.connect('mongodb://0.0.0.0:27017/card_dashbord')
-.then(data=>{
-    console.log("connected")
-})
-.catch(err=>{
-    console.log("connection failed")
-})
+.then(data=> console.log("connected"))
+.catch(err=> console.log("connection failed"))
 
 app.use(express.static('./src'))
 app.use("/css",express.static(path.join(__dirname,"node_modules/bootstrap/dist/css")))
@@ -30,6 +27,7 @@ app.get('/login',(req,res)=>{
 })
 
 // api post endpoints
+// auth 
 app.post('/login',async(req,res)=>{
     const user = await User.findOne(req.body)
     if(!user)
@@ -48,25 +46,27 @@ app.post('/signup',async(req,res)=>{
     }
 })
 
-// to be continued 
-// app.get("/getcards",async(req,res)=>{
-//     const {user} = req.body
-//     res.status(200).send(data);
-// })
+// card operations 
+app.post("/getcards",async(req,res)=>{
+    const {email} = req.body
+    // console.log(email)
+    const data = await Card.find({email}).select({date:1,heading:1,note:1,_id:0})
+    res.status(200).json({success:true, msg:"card data sent",card:data});
+})
 
-// app.post("/creatcard",async(req,res)=>{
-//     const {user} = req.body
-//     res.status(200).send(data);
-// })
+app.post("/createcard",async(req,res)=>{
+    const card = await Card.create(req.body)
+    res.status(200).json({success:true, msg:"card created"});
+})
 
-// app.post("/deletecard",async(req,res)=>{
-//     const {user} = req.body
-//     res.status(200).send(data);
-// })
+app.post("/deletecard",async(req,res)=>{
+    const card = await Card.deleteOne(req.body)
+    res.status(200).json({success: true,msg:"card deleted"});
+})
 
 //non-existing page yet to create
 app.all("*",(req,res)=>{
-    res.status(404).send("page not found")
+    res.status(404).sendFile(path.join(__dirname,"./src/pagenotfound.html"))
 })
 
 app.listen(port,()=>{

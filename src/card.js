@@ -1,6 +1,7 @@
 const allCardContainer = document?.querySelector(".allCardContainer");
 //note array to hold the card note data -> heading, note and date
 //temp data just for testing...
+let user = getUser();
 let noteArray = [
     {
         heading: "🎯 Weekly Goals",
@@ -91,7 +92,6 @@ class Card {
     }
     //renders card on each deletion and incertion
     static render() {
-        localStorage.setItem("noteLocalData", JSON.stringify(noteArray) || null);
         try {
             const currentCards = document.querySelectorAll(".card");
             currentCards.forEach(e => e.remove());
@@ -129,8 +129,10 @@ class Card {
 
 // first function calls
 // fetchUserNoteCards();
-Card.render();
+getCards(user);
+// Card.render();
 Card.checkEmpty();
+
 
 let prevEdit = null;
 
@@ -141,6 +143,7 @@ const addNoteBtn = document?.querySelector(".addNoteBtn");
 //creates card on click  
 addNoteBtn.addEventListener('click', () => {
     if (prevEdit != null) {
+        deleteCard(noteArray[prevEdit].heading,noteArray[prevEdit].date,noteArray[prevEdit].note,user)
         noteArray.splice(prevEdit, 1);
         prevEdit = null;
     }
@@ -160,6 +163,7 @@ addNoteBtn.addEventListener('click', () => {
             cardHeading.value = "";
             noteArray.push(NoteElementObj);
             Card.render();
+            createCards(heading,NoteElementObj.date,note,user)
         }
     } catch (error) {
         console.error('Note Error:', error);
@@ -171,6 +175,7 @@ allCardContainer.addEventListener('click', (e) => {
     let elementIndex = Number(e.target.parentNode.parentNode.getAttribute("id"));
     if (e.target.getAttribute("class").includes("deleteCardBt")) {
         e.target.parentNode.parentNode.remove();
+        deleteCard(noteArray[elementIndex].heading,noteArray[elementIndex].date,noteArray[elementIndex].note,user)
         noteArray.splice(elementIndex, 1);
         Card.render();
         Card.checkEmpty()

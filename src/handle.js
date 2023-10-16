@@ -1,28 +1,52 @@
 // testing....
-// fetching data from local storage if data doesnt exist fetch and check the in the db
-// function localDatafetch(){
-//     const user = JSON.parse(localStorage.getItem('usertoken'));
-//     if(!user){
-//         window.location = "./login.html"
-//     }
-// }
+// fetching user from local storage if data doesnt exist redirect to the login page 
+function getUser(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(!user){
+        window.location = "./login.html"
+    }else
+    console.log(user)
+    return user;
+}
 
-//nothing's here for now
+async function postData(url ='', data = {}){
+   try{
+        const response = await fetch(url, {
+            method:'POST', 
+            headers:{ 'Content-Type':'application/json' },
+            body: JSON.stringify(data)
+        });    
+        return response.json();
+    }catch(err){
+        throw err;
+    }
+}
+
+//get user cards from the db with matching email
+async function getCards(email){
+    try{
+        const result = await postData("/getcards",{email})
+        noteArray = result.card
+        Card.render();
+    }catch(err){
+        console.error("Unable to get user cards from the server",err)
+    }
+}
 
 
-//get global user no individual user created
-// async function fetchUserNoteCards(){
-//     try{
-//     const result = await fetch("/user/carddata")
-//     const data = await result.json()
-//     noteArray = data;
-//     Card.render();
-//     }catch(err){
-//         console.error("Unable to get user data from the server",err)
-//         localDatafetch() 
-//     }
-// }
-
-// async function postData(url="",data={}){
-    
-// }
+async function createCards(heading,date,note,email){
+    try{
+        const result = await postData("/createcard",{heading,date,note,email})
+        console.log(result)
+    }catch(err){
+        console.error("Unable to create user cards from the server",err)
+    }
+}
+async function deleteCard(heading,date,note,email){
+    try{
+        const result = await postData("/deletecard",{heading,date,note,email})
+        console.log(result)
+    }catch(err){
+        console.error("Unable to delete user cards from the server",err)
+    }
+}

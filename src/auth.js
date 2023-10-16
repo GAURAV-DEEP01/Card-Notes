@@ -12,7 +12,7 @@ async function postData(url='', data = {}){
 async function authPost(url){ 
     const email = userEmail.value.toLowerCase();
     const password = userPassword.value;
-    console.log(email,password)
+    // console.log(email,password)
     try{     
         const response = await postData(url,{email,password})
         //debugging
@@ -26,7 +26,7 @@ async function authPost(url){
             invalidUser.style.display="block"
             throw new Error('request failed')
         }
-        localStorage.setItem("user",response.user.email) 
+        localStorage.setItem("user",JSON.stringify(response.user.email)) 
         window.location = "./index.html";
     }catch(err){
        throw err;
