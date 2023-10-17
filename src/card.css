@@ -41,6 +41,12 @@ button:focus {
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
+      .truncate_heading {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
 .custom_btn{
     padding: 5px 7px;
     border: solid 1px ;
@@ -84,9 +90,15 @@ button:focus {
     outline: 0px solid transparent;
 }
 .card_view{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.673);
     height: 90vh;
     overflow-y: scroll;
+}
+.card_hover:hover {
+    background-color: #eeeeee44;
+    -webkit-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.267);
+    -moz-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.267);
+    box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.267);
 }
  
 .card_view_heading{

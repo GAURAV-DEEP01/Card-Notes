@@ -33,7 +33,6 @@ async function getCards(email){
     }
 }
 
-
 async function createCards(heading,date,note,email){
     try{
         const result = await postData("/createcard",{heading,date,note,email})
