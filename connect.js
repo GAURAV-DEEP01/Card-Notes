@@ -20,6 +20,7 @@ async function connectMongoDb() {
         await mongoose.connect(process.env.MONGODB_URL);
     } catch (err) { throw err; }
 }
+
 async function validatePassword(userData){
     try{
         const user = await User.findOne({email:userData.email});

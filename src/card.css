@@ -117,6 +117,19 @@ button:focus {
 textarea.form-control{
     height:200px;
 } 
+.logo{
+mix-blend-mode: multiply;
+}
+.navbar{
+    background-color: rgba(0, 0, 0, 0.053);
+    -webkit-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+    -moz-box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+    box-shadow: 0px 0px 30px -14px rgba(0, 0, 0, 0.207);
+}
+.svg_icons{
+    transform: translateY(-11%);
+    pointer-events: none;
+}
 @media (max-width:700px) {
     .card_view_heading{
         font-size: x-large;

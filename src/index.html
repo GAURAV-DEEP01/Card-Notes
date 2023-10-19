@@ -13,6 +13,7 @@
     <div class="container">
       <a class="navbar-brand" href="./index.html">
         <img
+        class="logo"
           src="images/Card logo.png"
           height="40"
           alt="card Notes Logo"
@@ -22,8 +23,8 @@
     </div>
   </nav>
 
-  <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 mt-1 w-100 "  style="display: none;">   
-    <button class="card_view_close custom_shadow rounded me-3 position-absolute top-0 end-0 px-3 py-2"><img src="icons/x.svg" alt="close icon" srcset=""></button>
+  <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 w-100 "  style="display: none;">   
+    <button class="card_view_close custom_shadow rounded mt-1 me-2 position-absolute top-0 end-0 px-3 py-2"><img src="icons/x.svg" alt="close icon"></button>
     <h3 class="card_view_heading fw-bold add_border text-capitalize text-break"></h3>
     <p class="card_view_date text-break"></p>
     <p class="card_view_note text-break"></p>
@@ -36,17 +37,17 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="cardModalLabel">New Note</h1>
+            <h1 class="modal-title fs-5" id="cardModalLabel">Card</h1>
             <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Heading :</label>
+                <label for="recipient-name" class="col-form-label fw-medium">Heading :</label>
                 <input type="text" class="form-control card_heading" id="recipient-name">
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">Note :</label>
+                <label for="message-text" class="col-form-label fw-medium">Note :</label>
                 <textarea class="form-control card_note" id="message-text"></textarea>
               </div>
             </form>
@@ -61,7 +62,7 @@
     <!-- MODEL END-->
       
       
-    <div class="allCardContainer containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
+    <div class="allCardContainer border containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
        
     </div>
 </div>

@@ -2,15 +2,14 @@ const path = require("path")
 const express = require("express")
 const app = express()
 const Card = require('./model/Card')
-const User = require('./model/User')
-const {signIn,connectMongoDb,validatePassword} = require('./connect.js')
+const database = require('./connect.js')
 require('dotenv').config();
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 //promise chaining for now change this later ("jugad")
-connectMongoDb()
+database.connectMongoDb()
 .then(data=> console.log("Connected"))
 .catch(err=>console.error("Connection error : ",err))
 
@@ -31,16 +30,20 @@ app.get('/login',(req,res)=>{
 // api post endpoints
 // auth 
 app.post('/login',async(req,res)=>{
-    const exists = await validatePassword(req.body)
-    if(!exists)
-        res.status(422).json({success:false, msg:"User doesn't exist, Please enter valid email and password"});
-    else
-        res.status(200).json({success:true, msg:"User found", user:{email:req.body.email}});
+    try{
+        const exists = await database.validatePassword(req.body)
+        if(!exists) 
+            res.status(422).json({success:false, msg:"User doesn't exist, Please enter valid email and password"});
+        else 
+            res.status(200).json({success:true, msg:"User found", user:{email:req.body.email}});
+    }catch{
+        res.status(500).json({success:false, msg:"Couldn't validate user somthing went wrong"});
+    }
 })
 
 app.post('/signup',async(req,res)=>{
     try{
-        await signIn(req.body.email ,req.body.password)
+        await database.signIn(req.body.email ,req.body.password)
         res.status(200).json({success: true, user:{email:req.body.email} , msg:"User successfully created"});
     }
     catch(err){
