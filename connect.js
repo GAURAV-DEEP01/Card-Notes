@@ -30,7 +30,8 @@ async function validatePassword(userData){
             return await bcrypt.compare(userData.password,user.password)
         }
     }catch(err){
-        console.log("validation error in custom",err)
+        console.log("validation error :",err)
+        throw err;
     }
 }
 module.exports = { signIn, connectMongoDb ,validatePassword}

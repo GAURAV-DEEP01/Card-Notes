@@ -130,6 +130,7 @@ mix-blend-mode: multiply;
     transform: translateY(-11%);
     pointer-events: none;
 }
+
 @media (max-width:700px) {
     .card_view_heading{
         font-size: x-large;
