@@ -31,11 +31,11 @@ app.get('/login',(req,res)=>{
 // auth 
 app.post('/login',async(req,res)=>{
     try{
-        const exists = await database.validatePassword(req.body)
-        if(!exists) 
+        const token = await database.validatePassword(req.body)
+        if(!token) 
             res.status(422).json({success:false, msg:"User doesn't exist, Please enter valid email and password"});
         else 
-            res.status(200).json({success:true, msg:"User found", user:{email:req.body.email}});
+            res.status(200).json({success:true, msg:"User found", userId:token});
     }catch{
         res.status(500).json({success:false, msg:"Couldn't validate user somthing went wrong"});
     }
@@ -43,8 +43,8 @@ app.post('/login',async(req,res)=>{
 
 app.post('/signup',async(req,res)=>{
     try{
-        await database.signIn(req.body.email ,req.body.password)
-        res.status(200).json({success: true, user:{email:req.body.email} , msg:"User successfully created"});
+        const token = await database.signIn(req.body.email ,req.body.password)
+        res.status(200).json({success: true, userId:token , msg:"User successfully created"});
     }
     catch(err){
         console.log(err)
@@ -55,8 +55,8 @@ app.post('/signup',async(req,res)=>{
 // card operations 
 app.post("/getcards",async(req,res)=>{
     try{
-        const {email} = req.body;
-        const data = await Card.find({email}).select({date:1,heading:1,note:1,_id:0});
+        const {userId} = req.body;
+        const data = await Card.find({userId}).select({date:1,heading:1,note:1,_id:0});
         res.status(200).json({success:true, msg:"card data sent",card:data});
     }catch(err){
         console.error(err);
@@ -66,7 +66,13 @@ app.post("/getcards",async(req,res)=>{
 
 app.post("/createcard",async(req,res)=>{
     try{
-        await Card.create(req.body);
+        const card = new Card ({
+            userId:String(req.body.userId),
+            heading:String(req.body.heading),
+            date:String(req.body.date),
+            note:String(req.body.note)
+        })
+        await card.save();
         res.status(200).json({success:true, msg:"card created"});
     }catch(err){
         res.status(500).json({success:false, msg:"card couldn't be created"});

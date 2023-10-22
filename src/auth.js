@@ -35,7 +35,8 @@ async function authPost(url){
             invalidUser.style.display="block"
             throw new Error('request failed');
         }
-        localStorage.setItem("user",JSON.stringify(response.user.email)); 
+        localStorage.setItem("user",JSON.stringify(response.userId));
+        console.log(response.userId) 
         window.location = "./index.html";
     }catch(err){
        throw err;

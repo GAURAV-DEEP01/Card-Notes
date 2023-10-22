@@ -5,7 +5,7 @@ function getUser(){
     if(!user){
         window.location = "./login.html"
     }else
-    console.log(user)
+    // console.log(user)
     return user;
 }
 
@@ -23,9 +23,9 @@ async function postData(url ='', data = {}){
 }
 
 //get user cards from the db with matching email
-async function getCards(email){
+async function getCards(userId){
     try{
-        const result = await postData("/getcards",{email})
+        const result = await postData("/getcards",{userId})
         noteArray = result.card
         Card.render();
     }catch(err){
@@ -33,18 +33,18 @@ async function getCards(email){
     }
 }
 
-async function createCards(heading,date,note,email){
+async function createCards(heading,date,note,userId){
     try{
-        const result = await postData("/createcard",{heading,date,note,email})
-        console.log(result)
+        const result = await postData("/createcard",{heading,date,note,userId})
+        // console.log(result)
     }catch(err){
         console.error("Unable to create user cards from the server",err)
     }
 }
-async function deleteCard(heading,date,note,email){
+async function deleteCard(heading,date,note,userId){
     try{
-        const result = await postData("/deletecard",{heading,date,note,email})
-        console.log(result)
+        const result = await postData("/deletecard",{heading,date,note,userId})
+        // console.log(result)
     }catch(err){
         console.error("Unable to delete user cards from the server",err)
     }
