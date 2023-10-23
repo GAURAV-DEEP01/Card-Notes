@@ -15,10 +15,7 @@ async function signIn(userEmail, userPassword) {
         demoData.forEach(ele => ele.userId = user._id.toString());
         await Card.insertMany(demoData);
         return user._id.toString();
-    }catch(err){
-        console.error(err)
-        throw err;
-    }
+    }catch(err){ throw err; }
 }
 
 async function connectMongoDb() {

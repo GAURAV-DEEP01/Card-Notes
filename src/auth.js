@@ -36,11 +36,8 @@ async function authPost(url){
             throw new Error('request failed');
         }
         localStorage.setItem("user",JSON.stringify(response.userId));
-        console.log(response.userId) 
         window.location = "./index.html";
-    }catch(err){
-       throw err;
-    }
+    }catch(err){ throw err; }
 }
 
 const userEmail = document?.getElementById('email')
