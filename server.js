@@ -8,7 +8,6 @@ require('dotenv').config();
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-//promise chaining for now change this later ("jugad")
 database.connectMongoDb()
 .then(data=> console.log("Connected"))
 .catch(err=>console.error("Connection error : ",err))
@@ -35,7 +34,7 @@ app.post('/login',async(req,res)=>{
         if(!token) 
             res.status(422).json({success:false, msg:"User doesn't exist, Please enter valid email and password"});
         else 
-            res.status(200).json({success:true, msg:"User found", userId:token});
+            res.status(200).json({success:true, msg:"User found", userId:token.userId,username:token.username});
     }catch{
         res.status(500).json({success:false, msg:"Couldn't validate user somthing went wrong"});
     }
@@ -43,8 +42,8 @@ app.post('/login',async(req,res)=>{
 
 app.post('/signup',async(req,res)=>{
     try{
-        const token = await database.signIn(req.body.email ,req.body.password)
-        res.status(200).json({success: true, userId:token , msg:"User successfully created"});
+        const token = await database.signIn(req.body.username,req.body.email ,req.body.password)
+        res.status(200).json({success: true, userId:token.userId,username:token.username , msg:"User successfully created"});
     }
     catch(err){
         console.log(err)

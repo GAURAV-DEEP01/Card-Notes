@@ -90,7 +90,7 @@ button:focus {
     outline: 0px solid transparent;
 }
 .card_view{
-    background-color: rgba(255, 255, 255, 0.673);
+    background-color: rgb(245, 245, 245);
     height: 90vh;
     overflow-y: scroll;
 }
@@ -131,6 +131,15 @@ mix-blend-mode: multiply;
     pointer-events: none;
 }
 
+.dropdown-item:active {
+    background-color: var(--secondaryColorHover) !important;
+    border-radius: 8px !important;
+    color: black !important;
+}
+.dropdown-item:hover {
+    background-color: var(--mainBtnColor) !important;
+    border-radius: 8px !important;
+}
 @media (max-width:700px) {
     .card_view_heading{
         font-size: x-large;

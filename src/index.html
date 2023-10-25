@@ -1,44 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="card.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Card Notes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="card.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <title>Card Notes</title>
 </head>
+
 <body>
-  <nav class="navbar">
+  <nav class="navbar ">
     <div class="container">
       <a class="navbar-brand" href="./index.html">
-        <img
-        class="logo"
-          src="images/Card logo.png"
-          height="40"
-          alt="card Notes Logo"
-          loading="lazy"
-        />
+        <img class="logo" src="images/Card logo.png" height="40" alt="card Notes Logo" loading="lazy" />
       </a>
+
+      <div class="">
+        <button type="button" class="btn rounded border-0" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" height="25" width="25"><g id="user-circle-single--circle-geometric-human-person-single-user"><path id="Union" fill="#0000009c" fill-rule="evenodd" d="M25 12.5a12.458928571428572 12.458928571428572 0 0 1 -3.466071428571429 8.639285714285714A12.464285714285715 12.464285714285715 0 0 1 12.535714285714286 25L12.5 25l-0.03571428571428572 0a12.464285714285715 12.464285714285715 0 0 1 -8.998214285714285 -3.8607142857142858A12.5 12.5 0 1 1 25 12.5Zm-4.923214285714286 6.25A9.801785714285714 9.801785714285714 0 0 0 12.5 15.178571428571429a9.801785714285714 9.801785714285714 0 0 0 -7.576785714285715 3.5714285714285716A9.801785714285714 9.801785714285714 0 0 0 12.5 22.321428571428573a9.801785714285714 9.801785714285714 0 0 0 7.576785714285715 -3.5714285714285716ZM12.5 13.392857142857144a4.464285714285714 4.464285714285714 0 1 0 0 -8.928571428571429 4.464285714285714 4.464285714285714 0 0 0 0 8.928571428571429Z" clip-rule="evenodd" stroke-width="1.7857142857142858"></path></g></svg>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end p-2 me-3">
+          <li class="py-2">
+            <span class="fw-light dropdown-item-text text-center">Username:</span>
+            <span class="fw-semibold dropdown-item-text text-center pb-2" id="username">username</span></li>
+          <li><button class="dropdown-item py-2 text-center" id="logout" type="button">log out <svg class="ms-2 svg_icons" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 15 15" height="15" width="15"><g id="logout-1--arrow-exit-frame-leave-logout-rectangle-right"><path id="Union" fill="#000" fill-rule="evenodd" d="M0 1.6071428571428572A1.6071428571428572 1.6071428571428572 0 0 1 1.6071428571428572 0h7.5A1.6071428571428572 1.6071428571428572 0 0 1 10.714285714285714 1.6071428571428572v2.0775a2.142857142857143 2.142857142857143 0 0 0 -0.7864285714285714 1.404642857142857H6.160714285714286a2.4107142857142856 2.4107142857142856 0 1 0 0 4.821428571428571h3.767142857142857A2.142857142857143 2.142857142857143 0 0 0 10.714285714285714 11.315357142857142V13.392857142857142A1.6071428571428572 1.6071428571428572 0 0 1 9.107142857142858 15h-7.5A1.6071428571428572 1.6071428571428572 0 0 1 0 13.392857142857142v-11.785714285714285Zm11.746071428571428 3.0075A0.8035714285714286 0.8035714285714286 0 0 0 11.25 5.357142857142857v1.0714285714285714H6.160714285714286a1.0714285714285714 1.0714285714285714 0 0 0 0 2.142857142857143h5.089285714285714v1.0714285714285714a0.8035714285714286 0.8035714285714286 0 0 0 1.3714285714285714 0.5678571428571428l2.142857142857143 -2.142857142857143a0.8035714285714286 0.8035714285714286 0 0 0 0 -1.1357142857142857l-2.142857142857143 -2.142857142857143a0.8035714285714286 0.8035714285714286 0 0 0 -0.8753571428571427 -0.17464285714285716Z" clip-rule="evenodd" stroke-width="1.0714285714285714"></path></g></svg></button></li>
+        </ul>
+      </div>
+
     </div>
+    
   </nav>
 
-  <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 w-100 "  style="display: none;">   
-    <button class="card_view_close custom_shadow rounded mt-1 me-2 position-absolute top-0 end-0 px-3 py-2"><img src="icons/x.svg" alt="close icon"></button>
+  <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 w-100 z-3" style="display: none;">
+    <button class="card_view_close custom_shadow rounded mt-1 me-2 position-absolute top-0 end-0 px-3 py-2"><img
+        src="icons/x.svg" alt="close icon"></button>
     <h3 class="card_view_heading fw-bold add_border text-capitalize text-break"></h3>
     <p class="card_view_date text-break"></p>
     <p class="card_view_note text-break"></p>
   </div>
 
   <div class="container container-sm mt-3 ">
-    <div class="navAndCreateBtns d-flex justify-content-end"><button type="button" class="main_add_btn custom_add_btn border-dark-subtle custom_shadow fw-normal" data-bs-toggle="modal" data-bs-target="#cardFormModal" >Add Note  <svg class="svg_icons ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" height="14" width="14"><g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math"><path id="Union" fill="#000000b8" fill-rule="evenodd" d="M8 1a1 1 0 0 0 -2 0v5H1a1 1 0 0 0 0 2h5v5a1 1 0 1 0 2 0V8h5a1 1 0 1 0 0 -2H8V1Z" clip-rule="evenodd" stroke-width="1"></path></g></svg> </button></div>
+    <div class="navAndCreateBtns d-flex justify-content-between px-1">
+      <button class="custom_add_btn border " type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+        Options<svg class="ms-2 svg_icons " xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>                 
+      </button>
+      
+      <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="staticBackdropLabel">Options</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div >
+           Sort:
+          </div>
+          <div type="button" class="p-2 my-1 rounded color_prim custom_shadow fw-normal" id="sortcard">newest first</div>
+        </div>
+      </div>
+        <!-- <div class="d-none d-sm-flex align-items-center ">
+          <input class="form-control" type="text" placeholder="Search cards" aria-label="Search Cards" id="searchBar">
+          <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>                    
+        </div> -->
+      <button type="button" class="main_add_btn custom_add_btn border custom_shadow fw-normal"
+        data-bs-toggle="modal" data-bs-target="#cardFormModal">Add Note <svg class="svg_icons ms-2"
+          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" height="14" width="14">
+          <g id="add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math">
+            <path id="Union" fill="#000000b8" fill-rule="evenodd"
+              d="M8 1a1 1 0 0 0 -2 0v5H1a1 1 0 0 0 0 2h5v5a1 1 0 1 0 2 0V8h5a1 1 0 1 0 0 -2H8V1Z" clip-rule="evenodd"
+              stroke-width="1"></path>
+          </g>
+        </svg> </button>
+    </div>
+
     <!-- MODEL -->
     <div class="modal fade" id="cardFormModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="cardModalLabel">Card</h1>
-            <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close new_note_close_btn" data-bs-dismiss="modal"
+              aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
@@ -60,14 +103,13 @@
       </div>
     </div>
     <!-- MODEL END-->
-      
-      
+
     <div class="allCardContainer border containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
-       
     </div>
-</div>
+  </div>
   <script src="handle.js" id="view_modal"></script>
   <script src="card.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

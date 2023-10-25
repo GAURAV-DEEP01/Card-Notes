@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Notes | login</title>
+    <title>Card Notes | Sign Up</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="card.css">
@@ -28,7 +28,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div class="card-body p-4 p-lg-5 text-black" >
+                    <div class="card-body p-4 px-lg-5 text-black" >
       
                       <div>
       
@@ -37,7 +37,11 @@
                         </div>
       
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create an account</h5>
-      
+                        <div class="form-outline mb-4">
+                          <input type="username" id="username" class="form-control form-control-lg" />
+                          <label class="form-label" for="username">Username</label>
+                        </div>
+
                         <div class="form-outline mb-4">
                           <input type="email" id="email" class="form-control form-control-lg" />
                           <label class="form-label" for="email">Email address</label>
@@ -52,7 +56,7 @@
                           <button class="custom_login_btn" id="signinsubmit" type="button">Sign In</button>
                           <p class="text-danger" id="invalidUser" style="display: none;"></p>
                         </div>
-                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? <a href="./login.html"
+                        <p class="mb-2S" style="color: #393f81;">Already have an account? <a href="./login.html"
                           style="color: #393f81;">Login</a></p>
                     
                       </div>

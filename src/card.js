@@ -1,7 +1,9 @@
 const allCardContainer = document?.querySelector(".allCardContainer");
 let user = getUser();
+let sortOrder = getSortOrder();
 //note array to hold the card note data -> heading, note and date
 let noteArray = [];
+
 class Card {
     // methods -> create, render, checkEmpty, viewFull
     static create(heading, note, date, indx) {
@@ -16,7 +18,10 @@ class Card {
                             <button class="custom_btn mb-1 color_prim custom_shadow deleteCardBtn border border-0">Delete    <svg class ="svg_icons mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" height="14" width="14"><g id="recycle-bin-2--remove-delete-empty-bin-trash-garbage"><path id="Subtract" fill="#000" fill-rule="evenodd" d="M5.763 2.013a1.75 1.75 0 0 1 2.914 0.737H5.323a1.75 1.75 0 0 1 0.44 -0.737Zm-1.974 0.737a3.25 3.25 0 0 1 6.422 0H13a0.75 0.75 0 0 1 0 1.5h-1v8.25a1.5 1.5 0 0 1 -1.5 1.5h-7A1.5 1.5 0 0 1 2 12.5V4.25H1a0.75 0.75 0 1 1 0 -1.5h2.789ZM5 5.876c0.345 0 0.625 0.28 0.625 0.625v4.002a0.625 0.625 0 0 1 -1.25 0V6.501c0 -0.345 0.28 -0.625 0.625 -0.625Zm4.625 0.625a0.625 0.625 0 0 0 -1.25 0v4.002a0.625 0.625 0 0 0 1.25 0V6.501Z" clip-rule="evenodd" stroke-width="1"></path></g></svg></button>
                             <button class="custom_btn mb-1 custom_shadow viewFullbtn border border-0">View full <svg  class ="svg_icons mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" height="14" width="14"><g id="arrow-expand--expand-small-bigger-retract-smaller-big"><path id="Union" fill="#000" fill-rule="evenodd" d="M0 1v3.5a0.5 0.5 0 0 0 0.854 0.354L2.146 3.56l2.147 2.146a1 1 0 0 0 1.414 -1.414L3.561 2.146 4.854 0.854A0.5 0.5 0 0 0 4.5 0h-4a0.5 0.5 0 0 0 -0.5 0.5V1Zm5.707 8.707a1 1 0 0 0 -1.414 -1.414l-2.147 2.146L0.854 9.146A0.5 0.5 0 0 0 0 9.5v4a0.5 0.5 0 0 0 0.5 0.5h4a0.5 0.5 0 0 0 0.354 -0.854L3.56 11.854l2.146 -2.147Zm2.586 -1.414a1 1 0 0 1 1.414 0l2.147 2.146 1.292 -1.293A0.5 0.5 0 0 1 14 9.5v4a0.5 0.5 0 0 1 -0.5 0.5h-4a0.5 0.5 0 0 1 -0.354 -0.854l1.293 -1.292 -2.146 -2.147a1 1 0 0 1 0 -1.414ZM9.5 0a0.5 0.5 0 0 0 -0.354 0.854l1.293 1.292 -2.146 2.147a1 1 0 0 0 1.414 1.414l2.147 -2.146 1.292 1.293A0.5 0.5 0 0 0 14 4.5v-4a0.5 0.5 0 0 0 -0.5 -0.5h-4Z" clip-rule="evenodd" stroke-width="1"></path></g></svg></button>
                         </div>`;
-        allCardContainer.prepend(card)
+        if(sortOrder=="newest first")
+            allCardContainer.prepend(card);
+        if(sortOrder=="oldest first")
+            allCardContainer.append(card);
     }
     //renders card on each deletion and incertion
     static render() {
@@ -142,6 +147,30 @@ newNoteCloseBtn.forEach((e) => {
         cardHeading.value = "";
     });
 });
+const sortBtn = document.getElementById("sortcard");
+sortBtn.addEventListener("click",()=>{
+    sortOrder = sortOrder === "newest first"? "oldest first": "newest first";
+    localStorage.setItem("sortOrder",sortOrder);
+    Card.render();
+    sortBtn.innerText=sortOrder
+})
 
-
-
+// const searchBar = document.getElementById("searchBar");
+// searchBar.addEventListener("input",()=>{
+// const searchTxt = searchBar.value.trim();
+//     let tempArray = noteArray;
+//     if(searchTxt!=""){
+//         noteArray = noteArray.filter((val)=>{
+//         const heading =val.heading.toLowerCase(); 
+//         return heading.includes(searchTxt.toLowerCase());
+//     })
+//     Card.render();
+//     noteArray = tempArray;
+//         Card.render();
+//     }
+// })
+const logoutBtn = document.getElementById("logout");
+logoutBtn.addEventListener("click",()=>{
+    localStorage.removeItem("user");
+    window.location = "./login"
+})
