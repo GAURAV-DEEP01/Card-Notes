@@ -2,7 +2,7 @@
 // fetching user from local storage if data doesnt exist redirect to the login page 
 function getUser(){
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user)
+    console.log("user",user)
     if(!user) window.location = "./login.html";
     const username = document.getElementById("username")
     console.log(user.username)

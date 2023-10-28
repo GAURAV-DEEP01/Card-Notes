@@ -17,16 +17,16 @@ button:focus {
     border: none;
 }
 .color_prim,.card_view_close{
-    background-color: var(--mainBtnColor);
+    background-color: var(--mainBtnColor) !important;
 }
 .color_prim:hover{
-    background-color: var(--mainBtnColorHover);
+    background-color: var(--mainBtnColorHover) !important;
 }
 .color_sec{
-    background-color: var(--secondaryColor);
+    background-color: var(--secondaryColor) !important;
 }
 .color_sec:hover,.card_view_close:hover{
-    background-color: var(--secondaryColorHover);
+    background-color: var(--secondaryColorHover) !important;
 }
 .add_border{
     padding-bottom:10px;
@@ -64,7 +64,7 @@ button:focus {
     background-color: var(--mainBtnColorHover);
 }
 .viewFullbtn{
-    background-color:#ff39ff3a ;
+    background-color:#ff39ff3a !important;
 }
 .viewFullbtn:hover{
     background-color: var(--secondaryColorHover);

@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const demoData = require("./demo-card-data/demoData");
-const User = require('./model/User')
-const Card = require('./model/Card')
-const bcrypt = require('bcryptjs')
+const User = require('./model/User');
+const Card = require('./model/Card');
+const Friends = require("./model/Friends");
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 async function signIn(username,userEmail, userPassword) {
@@ -12,7 +13,11 @@ async function signIn(username,userEmail, userPassword) {
             email: userEmail,
             password: userPassword
         });
-        await user.save();
+        const friend = new Friends({
+            username:username,
+            friends:[]
+        })
+        await Promise.all([user.save() ,friend.save()]);
         demoData.forEach(ele => ele.userId = user._id.toString());
         await Card.insertMany(demoData);
         const userId= user._id.toString();
@@ -35,8 +40,18 @@ async function validatePassword(userData){
         const username = user.username;
         return await bcrypt.compare(userData.password,user.password) ? {userId,username}  : null;
     }catch(err){
-        console.log("validation error :",err)
+        console.log("validation error :",err);
         throw err;
     }
 }
-module.exports = { signIn, connectMongoDb ,validatePassword}
+async function addFriend(username,friend=null){
+    try{
+        const user = await Friends.findOne({username});
+        if(!user.friends.includes(friend)&&friend){
+            user.friends.push(friend);
+            await user.save()
+        }
+        return user.friends;
+    }catch(err){ throw err; }
+}
+module.exports = { signIn, connectMongoDb ,validatePassword,addFriend}

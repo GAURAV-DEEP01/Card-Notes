@@ -1,6 +1,7 @@
 const allCardContainer = document?.querySelector(".allCardContainer");
 let user = getUser();
 let sortOrder = getSortOrder();
+let friends = []
 //note array to hold the card note data -> heading, note and date
 let noteArray = [];
 
@@ -107,6 +108,8 @@ allCardContainer.addEventListener('click', (e) => {
         deleteCard(noteArray[elementIndex].heading,noteArray[elementIndex].date,noteArray[elementIndex].note,user)
         noteArray.splice(elementIndex, 1);
         Card.render();
+        const toastForDeleted = new bootstrap.Toast(document.getElementById("toast_for_deleted"),{delay:1000})
+        toastForDeleted.show()
         return;
     }
     let elementClass = e.target.getAttribute("class");
@@ -155,20 +158,6 @@ sortBtn.addEventListener("click",()=>{
     sortBtn.innerText=sortOrder
 })
 
-// const searchBar = document.getElementById("searchBar");
-// searchBar.addEventListener("input",()=>{
-// const searchTxt = searchBar.value.trim();
-//     let tempArray = noteArray;
-//     if(searchTxt!=""){
-//         noteArray = noteArray.filter((val)=>{
-//         const heading =val.heading.toLowerCase(); 
-//         return heading.includes(searchTxt.toLowerCase());
-//     })
-//     Card.render();
-//     noteArray = tempArray;
-//         Card.render();
-//     }
-// })
 const logoutBtn = document.getElementById("logout");
 logoutBtn.addEventListener("click",()=>{
     localStorage.removeItem("user");
