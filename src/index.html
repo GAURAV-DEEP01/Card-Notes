@@ -49,7 +49,13 @@
   </nav>
 
   <div class="card_view rounded position-fixed px-sm-5 px-4 py-5 w-100 z-3" style="display: none;">
-    <button class="card_view_close custom_shadow rounded mt-1 me-2 position-absolute top-0 end-0 px-3 py-2"><img
+    <div class="dropstart position-static">
+      <button type="button" class="card_view_share border-0 position-absolute rounded custom_shadow top-0 end-0 px-4 py-sm-2 py-1 mt-1" data-bs-toggle="dropdown" aria-expanded="false">Share <svg class="ms-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16" height="16" width="16"><g id="share-link--share-transmit"><path id="Union" fill="#000" fill-rule="evenodd" d="M9.537333333333333 4.792666666666666a2.833333333333333 2.833333333333333 0 1 1 0.52 1.228l-3.594666666666667 1.5199999999999998a2.8533333333333335 2.8533333333333335 0 0 1 0 0.9186666666666665l3.594 1.5199999999999998a2.833333333333333 2.833333333333333 0 1 1 -0.52 1.228l-3.593333333333333 -1.5199999999999998a2.833333333333333 2.833333333333333 0 1 1 0 -3.3739999999999997l3.593333333333333 -1.5206666666666666Z" clip-rule="evenodd" stroke-width="0.6666666666666666"></path></g></svg></button>
+      <ul class="dropdown-menu" id="share_btn_friends_list">
+        <li class="list-group-item ps-3 p-2">No Friends :&#40;</li>
+      </ul>
+    </div>
+    <button class="card_view_close custom_shadow rounded mt-1 me-2 position-absolute top-0 end-0 px-3 py-sm-2 py-1"><img
         src="icons/x.svg" alt="close icon"></button>
     <h3 class="card_view_heading fw-bold add_border text-capitalize text-break"></h3>
     <p class="card_view_date text-break"></p>

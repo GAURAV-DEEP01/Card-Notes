@@ -16,7 +16,10 @@ button:focus {
 .card_view_close{
     border: none;
 }
-.color_prim,.card_view_close{
+.card_view_share{
+    margin-right: 80px !important;
+}
+.color_prim,.card_view_close,.card_view_share{
     background-color: var(--mainBtnColor) !important;
 }
 .color_prim:hover{
@@ -25,7 +28,7 @@ button:focus {
 .color_sec{
     background-color: var(--secondaryColor) !important;
 }
-.color_sec:hover,.card_view_close:hover{
+.color_sec:hover,.card_view_close:hover,.card_view_share:hover{
     background-color: var(--secondaryColorHover) !important;
 }
 .add_border{
@@ -139,6 +142,10 @@ mix-blend-mode: multiply;
 .dropdown-item:hover {
     background-color: var(--mainBtnColor) !important;
     border-radius: 8px !important;
+}
+#share_btn_friends_list{
+    max-height: 700px !important;
+    overflow-y: auto ;
 }
 @media (max-width:700px) {
     .card_view_heading{

@@ -95,27 +95,29 @@ app.post("/getuser",async(req, res)=>{
             res.status(404).json({success:false, msg:"user does not exist"}) :
             res.status(200).json({success:true,msg:"user found",username:exists.username }) ;
     }catch{
-        1
+        res.status(500).json({success:false,msg:"unable connect to database"});
     }
 })
 app.post("/addfriend",async(req,res)=>{
     try{
         const user = await database.addFriend(req.body.username,req.body.friend)
         !user ?
-            res.status(422).json({success:false,msg:"unable to add friend"}):
+            res.status(404).json({success:false,msg:"unable to add friend"}):
             res.status(200).json({success:true,msg:"friend added succesfully",user});
     }catch(err){
         console.error("couldn't add friend : ",err)
+        res.status(500).json({success:false,msg:"unable connect to database"});
     }
 })
 app.post("/loadfriends",async(req,res)=>{
     try{
         const user = await database.addFriend(req.body.username)
         !user ?
-            res.status(422).json({success:false,msg:"found friends list"}):
-            res.status(200).json({success:true,msg:"friends list found succesfully",friends:user});
+            res.status(404).json({success:false,msg:"friends list not found"}):
+            res.status(200).json({success:true,msg:"friends list found",friends:user});
     }catch(err){
         console.error("couldn find friends list : ",err)
+        res.status(500).json({success:false,msg:"unable connect to database"});
     }
 })
 
