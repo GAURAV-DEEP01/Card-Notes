@@ -5,13 +5,15 @@ function getUser(){
     console.log("user",user)
     if(!user) window.location = "./login.html";
     const username = document.getElementById("username")
-    console.log(user.username)
     username.innerText = user.username
-    return user.userId;
+    return user;
 }
+const sortBtn = document.getElementById("sortcard");
 function getSortOrder(){
     let order = localStorage.getItem("sortOrder");
-    return !order ? "newest first": order;
+    order = !order ? "newest first": order
+    sortBtn.innerText= order
+    return order;
 }
 
 async function postData(url ='', data = {}){
@@ -26,10 +28,14 @@ async function postData(url ='', data = {}){
 }
 
 //get user cards from the db with matching email
-async function getCards(userId){
+async function getCards(user){
     try{
-        const result = await postData("/getcards",{userId});
-        noteArray = result.card;
+        const myCards = postData("/getcards",{userId:user.userId});
+        const sharedCards = postData("/getsharedcards",{username:user.username})
+        const bothCards = await Promise.all([myCards, sharedCards])
+        noteArray = personalCards = bothCards[0].card;
+        recievedCards = bothCards[1].cards[0];
+        sentCards = bothCards[1].cards[1];
         Card.render();
     }catch(err){
         console.error("Unable to get user cards from the server",err);

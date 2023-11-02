@@ -1,9 +1,8 @@
 const searchFriends = document.getElementById("search_friends");
 const searchFriendsBtn = document.getElementById("search_friends_btn");
-const toast = new bootstrap.Toast(document.getElementById('toastfriend'),{delay:50000});
+const toast = new bootstrap.Toast(document.getElementById('toastfriend'),{autohide:false});
 const searchFriendResult = document.getElementById("searchFriendResult");
 const friendNotFound = document.getElementById("card_friend_not_found");
-const friendUsername = document.getElementById("add_friend_username");
 
 friendNotFound.style.display = "none";
 searchFriendsBtn.addEventListener("click",async()=>{
@@ -26,6 +25,8 @@ friendNotFound.style.display = "none";
     }
 })
 
+const friendUsername = document.getElementById("add_friend_username");
+
 function createFriendOption(username){ 
     toast.show();
     friendUsername.innerText = username;
@@ -33,6 +34,7 @@ function createFriendOption(username){
 
 const myUserName = JSON.parse(localStorage.getItem("user"));
 const addFriend = document.getElementById("add_friend");
+
 addFriend.onclick =async()=>{
     try{
         const addedFriend = friendUsername.innerText.trim();
@@ -47,9 +49,9 @@ addFriend.onclick =async()=>{
 
 async function loadfriends(){
   const friendsList = await postData("./loadfriends",{username:myUserName.username})
-//console.log("friendsList",friendsList)
+console.log("friendsList",friendsList)
   if(friendsList.success&&friendsList.friends.length!=0){
-    friends = friendsList.friends;
+    // friends = friendsList.friends;
     const shareListGroup = document.getElementById('share_btn_friends_list');
     shareListGroup.innerHTML ="";
     document?.querySelectorAll(".deletableFriendlist").forEach(e=> e.remove());
@@ -69,11 +71,63 @@ async function loadfriends(){
   }
 }
 loadfriends();
+const sendToastEle = document.getElementById('sendToast');
+const sendToast = new bootstrap.Toast(sendToastEle,{delay:700});
 function addShareEvent(){
     const shareGroup = document.getElementById("share_btn_friends_list");
-    shareGroup.onclick = (e)=>{
+    shareGroup.onclick = async(e)=>{
         if(e.target.getAttribute("class").includes("shareBtn"))
-        // feature yet to implement
-            console.log("sending.. ");
+            await sendCards(e.target.parentNode.firstChild.innerText.trim());
     }
 }
+const veiwHeading = document.querySelector(".card_view_heading");
+const veiwDate = document.querySelector(".card_view_date");
+const veiwNote = document.querySelector(".card_view_note");
+const sendToastBody = document.getElementById("send_toast_body"); 
+async function sendCards(friendName){
+    try {
+        const data = {
+            from:myUserName.username,
+            to:friendName,
+            heading:veiwHeading.innerText,
+            date:veiwDate.innerText,
+            note:veiwNote.innerText,
+        }
+        const response = await postData("/sendcard",data);
+        if(response.success)
+            sendToast.show() 
+        else
+            throw new Error()
+    } catch  {
+        sendToastBody.innerHTML ="Send Failed";
+        sendToastEle.style.backgroundColor = "#ff5858"
+        sendToast.show()
+    }
+}
+const add_note_btn = document.getElementById("add_note_btn")
+const sentCardBtn = document.querySelectorAll(".sent_cards")
+sentCardBtn.forEach((thisBtn)=>{
+    thisBtn.onclick = ()=>{
+        noteArray = sentCards;
+        add_note_btn.style.display = "none"
+        const msg = "You did not send anything"
+        Card.render(msg,"sent")
+    }
+})
+const receiveCardsBtn = document.querySelectorAll(".received_cards")
+receiveCardsBtn.forEach((thisBtn)=>{
+    thisBtn.onclick = ()=>{
+    add_note_btn.style.display = "none"
+    noteArray = recievedCards;
+    const msg = "You did not receive any card notes"
+    Card.render(msg,"recieved")
+    }
+})
+const myCardsBtn = document.querySelectorAll(".my_cards")
+myCardsBtn.forEach((thisBtn)=>{
+    thisBtn.onclick = ()=>{
+    noteArray = personalCards;
+    add_note_btn.style.display = "block"
+    Card.render()
+    }
+})

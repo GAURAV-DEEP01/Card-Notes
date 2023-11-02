@@ -3,6 +3,7 @@ const demoData = require("./demo-card-data/demoData");
 const User = require('./model/User');
 const Card = require('./model/Card');
 const Friends = require("./model/Friends");
+const SharedCards = require("./model/SharedCards");
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
@@ -49,9 +50,22 @@ async function addFriend(username,friend=null){
         const user = await Friends.findOne({username});
         if(!user.friends.includes(friend)&&friend){
             user.friends.push(friend);
-            await user.save()
+            await user.save();
         }
         return user.friends;
     }catch(err){ throw err; }
 }
-module.exports = { signIn, connectMongoDb ,validatePassword,addFriend}
+async function receiveCards(sentCard){
+    try{
+        const card = new SharedCards(sentCard)
+        await card.save()
+    }catch(err){ throw err }
+}
+async function getSharedCards(username){
+    try{
+        const recievedCards =  SharedCards.find({to:username})
+        const sentCards =  SharedCards.find({from:username})
+        return await Promise.all([recievedCards,sentCards])
+    }catch(err){ throw err }
+}
+module.exports = { signIn, connectMongoDb ,validatePassword ,addFriend ,receiveCards ,getSharedCards }

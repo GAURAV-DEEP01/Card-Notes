@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 database.connectMongoDb()
-.then(data=> console.log("Connected"))
+.then(_=> console.info("Connected"))
 .catch(err=>console.error("Connection error : ",err))
 
 // static files
@@ -46,7 +46,7 @@ app.post('/signup',async(req,res)=>{
         res.status(200).json({success: true, userId:token.userId,username:token.username , msg:"User successfully created"});
     }
     catch(err){
-        console.log(err)
+        console.error(err)
         res.status(422).json({success:false, msg:"User couldn't be created"});
     }
 })
@@ -89,12 +89,12 @@ app.post("/deletecard",async(req,res)=>{
 //friends
 app.post("/getuser",async(req, res)=>{
     try{
-        console.log(req.body.username)
         const exists = await User.findOne({username:req.body.username});
         !exists ?
             res.status(404).json({success:false, msg:"user does not exist"}) :
             res.status(200).json({success:true,msg:"user found",username:exists.username }) ;
     }catch{
+        console.error("Couldn't getuser: ",err)
         res.status(500).json({success:false,msg:"unable connect to database"});
     }
 })
@@ -105,7 +105,7 @@ app.post("/addfriend",async(req,res)=>{
             res.status(404).json({success:false,msg:"unable to add friend"}):
             res.status(200).json({success:true,msg:"friend added succesfully",user});
     }catch(err){
-        console.error("couldn't add friend : ",err)
+        console.error("Couldn't add friend : ",err)
         res.status(500).json({success:false,msg:"unable connect to database"});
     }
 })
@@ -114,10 +114,28 @@ app.post("/loadfriends",async(req,res)=>{
         const user = await database.addFriend(req.body.username)
         !user ?
             res.status(404).json({success:false,msg:"friends list not found"}):
-            res.status(200).json({success:true,msg:"friends list found",friends:user});
+            res.status(200).json({success:true,msg:"Friends list found",friends:user});
     }catch(err){
-        console.error("couldn find friends list : ",err)
-        res.status(500).json({success:false,msg:"unable connect to database"});
+        console.error("Couldn't find friends list : ",err)
+        res.status(500).json({success:false,msg:"Unable connect to database"});
+    }
+})
+app.post("/sendcard",async(req,res)=>{
+    try{
+        await database.receiveCards(req.body)
+        res.status(200).json({success:true,msg:"Card sent"});
+    }catch(err){
+        console.error("Couldn't recieve card : ",err)
+        res.status(500).json({success:false,msg:"Unable connect to database"});
+    }
+})
+app.post("/getsharedcards",async(req,res)=>{
+    try{
+        const cards = await database.getSharedCards(req.body.username)
+        res.status(200).json({success:true,msg:"Shared Cards found", cards});
+    }catch(err){
+        console.error("Couldn't get Shared Cards : ",err)
+        res.status(500).json({success:false,msg:"Unable connect to database"});
     }
 })
 
@@ -127,5 +145,5 @@ app.all("*",(req,res)=>{
 })
 
 app.listen(process.env.PORT,()=>{
-    console.log(`listening to ${process.env.PORT}`);
+    console.info(`listening to ${process.env.PORT}`);
 })

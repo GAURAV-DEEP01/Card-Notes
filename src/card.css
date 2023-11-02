@@ -2,6 +2,25 @@
     margin: 0px;
     padding: 0px;
 }
+html {
+    overflow: -moz-scrollbars-vertical; /* For Firefox */
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.155);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.406);
+}
 
 :root{
  --mainBtnColor : #7fffd47a;
@@ -70,7 +89,7 @@ button:focus {
     background-color:#ff39ff3a !important;
 }
 .viewFullbtn:hover{
-    background-color: var(--secondaryColorHover);
+    background-color: var(--secondaryColorHover) !important;
 }
 .noteHight{
     height: 50px;
