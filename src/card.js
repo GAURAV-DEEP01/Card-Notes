@@ -71,7 +71,6 @@ class Card {
     }
     static viewFull(heading, note, date) {
         allCardContainer.style.display = "none";
-        mainAddBtn.style.display = "none";
         cardView.style.display = "block";
         cardViewHeading.innerText = heading;
         cardViewDate.innerText = date;
@@ -155,7 +154,6 @@ const mainAddBtn = document.querySelector(".main_add_btn");
 const cardViewCloseBtn = document.querySelector(".card_view_close");
 cardViewCloseBtn.addEventListener("click", () => {
     allCardContainer.style.display = "grid";
-    mainAddBtn.style.display = "block";
     cardView.style.display = "none";
 })
 

@@ -41,7 +41,7 @@ async function validatePassword(userData){
         const username = user.username;
         return await bcrypt.compare(userData.password,user.password) ? {userId,username}  : null;
     }catch(err){
-        console.log("validation error :",err);
+        console.error("validation error :",err);
         throw err;
     }
 }

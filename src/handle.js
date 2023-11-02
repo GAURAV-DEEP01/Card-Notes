@@ -26,10 +26,19 @@ async function postData(url ='', data = {}){
         return response.json();
     }catch(err){ throw err; }
 }
-
+async function doesUserExist (){
+    try{
+        const userExists = await postData("/getuser",{username:user.username})
+        if (!userExists.success)
+        window.location = "./login.html";
+    }catch{
+        console.log("hi")
+    }
+}
 //get user cards from the db with matching email
 async function getCards(user){
     try{
+        await doesUserExist()
         const myCards = postData("/getcards",{userId:user.userId});
         const sharedCards = postData("/getsharedcards",{username:user.username})
         const bothCards = await Promise.all([myCards, sharedCards])
