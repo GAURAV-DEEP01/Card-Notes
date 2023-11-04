@@ -106,25 +106,25 @@ async function sendCards(friendName){
 }
 const add_note_btn = document.getElementById("add_note_btn")
 const sentCardBtn = document.querySelectorAll(".sent_cards")
-sentCardBtn.forEach((thisBtn)=>{
+sentCardBtn.forEach(thisBtn=>{
     thisBtn.onclick = ()=>{
         noteArray = sentCards;
         add_note_btn.style.display = "none"
-        const msg = "You did not send anything"
+        const msg = "You did not send any Card Notes"
         Card.render(msg,"sent")
     }
 })
 const receiveCardsBtn = document.querySelectorAll(".received_cards")
-receiveCardsBtn.forEach((thisBtn)=>{
+receiveCardsBtn.forEach(thisBtn=>{
     thisBtn.onclick = ()=>{
         add_note_btn.style.display = "none"
         noteArray = recievedCards;
-        const msg = "You did not receive any card notes"
+        const msg = "You did not receive any Card Notes"
         Card.render(msg,"recieved")
     }
 })
 const myCardsBtn = document.querySelectorAll(".my_cards")
-myCardsBtn.forEach((thisBtn)=>{
+myCardsBtn.forEach(thisBtn=>{
     thisBtn.onclick = ()=>{
         noteArray = personalCards;
         add_note_btn.style.display = "block"

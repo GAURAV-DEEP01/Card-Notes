@@ -1,5 +1,6 @@
 // testing....
-// fetching user from local storage if data doesnt exist redirect to the login page 
+// fetching user from local storage if data doesnt exist redirect to the login page
+
 function getUser(){
     const user = JSON.parse(localStorage.getItem('user'));
     console.log("user",user)
@@ -15,7 +16,19 @@ function getSortOrder(){
     sortBtn.innerText= order
     return order;
 }
-
+function infoForUser(msg){
+    const infoToastText = document.getElementById("info_toast_text") 
+    const toastForInfo = new bootstrap.Toast(document.getElementById("info_toast"),{delay:1000})
+    infoToastText.innerText = msg;
+    toastForInfo.show()
+}
+const asyncWrapper = async(fn)=>{
+    try{
+        await Promise.resolve(fn());
+    }catch(err){
+        throw err; 
+    }
+} 
 async function postData(url ='', data = {}){
    try{
         const response = await fetch(url, {
@@ -31,8 +44,8 @@ async function doesUserExist (){
         const userExists = await postData("/getuser",{username:user.username})
         if (!userExists.success)
         window.location = "./login.html";
-    }catch{
-        console.log("hi")
+    }catch(err){
+        console.error(err)
     }
 }
 //get user cards from the db with matching email
@@ -50,11 +63,10 @@ async function getCards(user){
         console.error("Unable to get user cards from the server",err);
     }
 }
-
 async function createCards(heading,date,note,userId){
     try{
         const result = await postData("/createcard",{heading,date,note,userId});
-        // console.log(result)
+        if(!result.success)  infoForUser(result.msg)
     }catch(err){
         console.error("Unable to create user cards from the server",err);
     }
@@ -62,7 +74,7 @@ async function createCards(heading,date,note,userId){
 async function deleteCard(heading,date,note,userId){
     try{
         const result = await postData("/deletecard",{heading,date,note,userId});
-        // console.log(result)
+        if(!result.success)  infoForUser(result.msg)
     }catch(err){
         console.error("Unable to delete user cards from the server",err);
     }

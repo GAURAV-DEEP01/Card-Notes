@@ -72,9 +72,9 @@
 
   <div class="container container-sm mt-3 ">
 
-      <div  class="toast align-items-center position-fixed z-3 w-50" id="toast_for_deleted" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #ffaaff;">
+      <div  class="toast align-items-center position-fixed z-3" id="info_toast" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #ffaaff;">
         <div class="d-flex">
-          <div class="toast-body">
+          <div class="toast-body" id="info_toast_text">
             Deleted
           </div>
           <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -82,7 +82,7 @@
       </div>
     <div class="navAndCreateBtns d-flex justify-content-between px-1">
       <div class="btn-group" role="group" >
-      <button class="custom_add_btn border z-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+      <button class="custom_add_btn border z-1 custom_shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
         aria-controls="staticBackdrop">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
           viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -184,9 +184,9 @@
     <div class="allCardContainer border containeBg mt-3 p-2 m-1 m-sm-0 mt-sm-3 rounded  grid gap-1">
     </div>
   </div>
+  <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="handle.js" id="view_modal"></script>
   <script src="card.js"></script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="friends.js"></script>
 </body>
 

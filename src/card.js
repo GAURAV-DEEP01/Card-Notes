@@ -3,7 +3,7 @@ let user = getUser();
 let sortOrder = getSortOrder();
 //main note array to hold the card note data -> heading, note and date
 let noteArray = [];
-//It is what it sounds like :)
+//Users cards
 let personalCards = [];
 //shared cards array to hold the card note data -> from , to , heading, note and date
 let sentCards = [];
@@ -125,8 +125,7 @@ allCardContainer.addEventListener('click', (e) => {
         deleteCard(noteArray[elementIndex].heading,noteArray[elementIndex].date,noteArray[elementIndex].note,user.userId)
         noteArray.splice(elementIndex, 1);
         Card.render();
-        const toastForDeleted = new bootstrap.Toast(document.getElementById("toast_for_deleted"),{delay:1000})
-        toastForDeleted.show()
+        infoForUser("Deleted")
         return;
     }
     let elementClass = e.target.getAttribute("class");

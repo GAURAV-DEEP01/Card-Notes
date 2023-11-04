@@ -2,13 +2,13 @@
     margin: 0px;
     padding: 0px;
 }
-html {
+body {
     overflow: -moz-scrollbars-vertical; /* For Firefox */
     overflow-y: scroll;
     
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -17,6 +17,8 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.155);
+    border: 4px solid transparent;
+    border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

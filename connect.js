@@ -7,7 +7,7 @@ const SharedCards = require("./model/SharedCards");
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
-async function signIn(username,userEmail, userPassword) {
+exports.signIn = async (username,userEmail, userPassword)=>{
     try{
         const user = new User({
             username: username,
@@ -26,13 +26,13 @@ async function signIn(username,userEmail, userPassword) {
     }catch(err){ throw err; }
 }
 
-async function connectMongoDb() {
+exports.connectMongoDb = async()=>{
     try {
-        await mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
+        await mongoose.connect(process.env.MONGODB_URL,{ useUnifiedTopology: true,useNewUrlParser: true});
     } catch (err) { throw err; }
 }
 
-async function validatePassword(userData){
+exports.validatePassword = async (userData)=>{
     try{
         const user = await User.findOne({email:userData.email});
         if(!user)
@@ -45,7 +45,18 @@ async function validatePassword(userData){
         throw err;
     }
 }
-async function addFriend(username,friend=null){
+exports.createCard = async(user) =>{
+    try {
+        const card = new Card ({
+            userId:String(user.userId),
+            heading:String(user.heading),
+            date:String(user.date),
+            note:String(user.note)
+        })
+        await card.save();
+    } catch (err) { throw err}
+}
+exports.addFriend = async(username,friend=null)=>{
     try{
         const user = await Friends.findOne({username});
         if(!user.friends.includes(friend)&&friend){
@@ -55,17 +66,16 @@ async function addFriend(username,friend=null){
         return user.friends;
     }catch(err){ throw err; }
 }
-async function receiveCards(sentCard){
+exports.receiveCards = async(sentCard)=>{
     try{
         const card = new SharedCards(sentCard)
         await card.save()
     }catch(err){ throw err }
 }
-async function getSharedCards(username){
+exports.getSharedCards = async(username)=>{
     try{
         const recievedCards =  SharedCards.find({to:username})
         const sentCards =  SharedCards.find({from:username})
         return await Promise.all([recievedCards,sentCards])
     }catch(err){ throw err }
 }
-module.exports = { signIn, connectMongoDb ,validatePassword ,addFriend ,receiveCards ,getSharedCards }
