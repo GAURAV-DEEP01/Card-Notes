@@ -131,7 +131,7 @@ button:focus {
 }
 .card_view_note{
     height: auto;
-    font-size: x-large;
+    font-size: 1.3rem;
     line-height: 1.5;
     /* font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif; */
 }

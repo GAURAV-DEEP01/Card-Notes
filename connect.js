@@ -45,6 +45,7 @@ exports.validatePassword = async (userData)=>{
         throw err;
     }
 }
+
 exports.createCard = async(user) =>{
     try {
         const card = new Card ({
@@ -56,22 +57,25 @@ exports.createCard = async(user) =>{
         await card.save();
     } catch (err) { throw err}
 }
+
 exports.addFriend = async(username,friend=null)=>{
     try{
         const user = await Friends.findOne({username});
-        if(!user.friends.includes(friend)&&friend){
+        if(friend&&!user?.friends?.includes(friend)){
             user.friends.push(friend);
             await user.save();
         }
         return user.friends;
     }catch(err){ throw err; }
 }
+
 exports.receiveCards = async(sentCard)=>{
     try{
         const card = new SharedCards(sentCard)
         await card.save()
     }catch(err){ throw err }
 }
+
 exports.getSharedCards = async(username)=>{
     try{
         const recievedCards =  SharedCards.find({to:username})
