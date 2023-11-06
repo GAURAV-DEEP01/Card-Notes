@@ -22,49 +22,49 @@ No sales pitch here, just my love for coding.
 
 ### Sign Up
 
-<img align="right" width="50%" src="https://www.imghost.net/ib/UOfsfjljnPpuxvG_1699263105.jpg" alt="Sign Up page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=16NDieurKpsqd6W-9jJslbSZn1qGv5uF3" alt="Sign Up page" />
 The Sign Up page is your gateway to creating an account on our platform. To get started, simply enter your chosen username, email, and password. This step ensures that you can access all the features and benefits our platform has to offer
 
 <br clear="right" />
 
 ### Login
 
-<img align="right" width="50%" src="https://www.imghost.net/ib/9UVNKtGeDgtZZ8o_1699265047.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=16NDieurKpsqd6W-9jJslbSZn1qGv5uF3" alt="Login page" />
 For returning users, the Login page is where you can access your account by entering your registered email and password. Once logged in, you'll gain access to your personalized dashboard and all your saved card notes.
 
 <br clear="right" />
 
 ### Dashboard
-<img align="right" width="50%" src="https://www.imghost.net/ib/yIJWj1o1SUC4546_1699265993.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=1wY5AQ18S43FJ1o2W2UDXI5DzMiavTR8Z" alt="Login page" />
 The Dashboard serves as your central hub for managing and interacting with your card notes. It provides an overview of all the cards you've created and received. With the dashboard, you can easily navigate through your digital collection of card notes, making it a breeze to find, edit, or delete them.
 
 <br clear="right" />
 
 ### Add Note
-<img align="right" width="50%" src="https://www.imghost.net/ib/r3XvTtvqeLDuEpj_1699266261.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=1t6awZOFbK6ONGI5fqBqyjmyH5DqynCXg" alt="Login page" />
 Adding a Note is where your creativity shines. This feature allows you to craft new card notes from scratch. You can add headings, dates, and your unique insights or messages to create meaningful and personalized digital cards.
 <br clear="right" />
 
 ### Options
-<img align="right" width="50%" src="https://www.imghost.net/ib/fehC6Wd58Lp9LtD_1699271965.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=104wYN389cI_5eQjC3VCrGhM7Q9dx4nXi" alt="Login page" />
 In the Options menu, you have some functionalities, including the ability to sort your cards. You can also view your friends and add new friends to your network.
 <br clear="right" />
 
 ### Share Card Note
-<img align="right" width="50%" src="https://www.imghost.net/ib/A3Fspk6L2AJW4qY_1699271146.png" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=1joDT18YT8-jkK6JU_bFqmBhsy5npe_ES" alt="Login page" />
 The Share Card Note feature lets you share your card creations with others. Whether you want to send a heartfelt message or share a creative idea, this function makes it easy to distribute your digital cards to your chosen recipients.
 <br clear="right" />
 
 ### Sent Card Notes
-<img align="right" width="50%" src="https://www.imghost.net/ib/ZQxqU3TKHwDxZRA_1699271312.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=1C9NvsSFUf2l_ziuuWMAwj43dzNerT-W7" alt="Login page" />
 Sent Card Notes provide a record of all the digital cards you've shared with others. This section helps you keep track of your outgoing communications, making it convenient to review past interactions.
 <br clear="right" />
 
 ### Received Card Notes
-<img align="right" width="50%" src="https://www.imghost.net/ib/psH9c6e0f5HvIOb_1699271386.jpg" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=19S_8JApBRUAfwu7rFIl0tmxACK5YmyRR" alt="Login page" />
 Received Card Notes keep a log of all the cards you've received from other users. You can revisit these cards at any time, making it easy to relive cherished memories or access valuable information shared with you.
 <br clear="right" />
 
 ### Log Out
-<img align="right" width="50%" src="https://www.imghost.net/ib/2LtjMw6MbwVPS1j_1699271628.png" alt="Login page" />
+<img align="right" width="50%" src="https://drive.google.com/uc?id=1WMDv3jDFQwOS7gPOXDIFgMtx2iVQWviY" alt="Login page" />
 To end your current session, you can log out from this page.
