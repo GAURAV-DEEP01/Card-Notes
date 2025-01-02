@@ -4,12 +4,11 @@
   "description": "Card project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "demon":"nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "engines": {
-    "node": "v18.16.0"
+    "node": "20.x"
   },
   "author": "",
   "license": "ISC",
